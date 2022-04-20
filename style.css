@@ -17,18 +17,20 @@ body {
 
 }
 
-#row-top{
+#row-top {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 10%;
 }
-#row-align-bottom{
+
+#row-align-bottom {
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
-.letter{
+
+.letter {
     border-bottom: solid 6px black;
     font-size: 3em;
     margin: 10px;
@@ -185,7 +187,7 @@ body {
     padding: 0;
 }
 
-#bar-armR {
+#bar-armL {
     position: absolute;
     top: 62px;
     left: 138px;
@@ -197,7 +199,7 @@ body {
     padding: 0;
 }
 
-#bar-armL {
+#bar-armR {
     position: absolute;
     top: 62px;
     left: 164px;
@@ -209,7 +211,7 @@ body {
     padding: 0;
 }
 
-#bar-legR {
+#bar-legL {
     position: absolute;
     top: 120px;
     left: 140px;
@@ -221,7 +223,7 @@ body {
     padding: 0;
 }
 
-#bar-legL {
+#bar-legR {
     position: absolute;
     top: 120px;
     left: 162px;
@@ -234,7 +236,19 @@ body {
 }
 
 
-
+#bar-legL,
+#bar-legR,
+#bar-armL,
+#bar-armR,
+#bar-body,
+#bar-head,
+#bar-corde,
+#bar-corner,
+#bar-top,
+#bar-vertical,
+#bar-bottom {
+    display: none;
+}
 
 
 @media screen and (max-width: 800px) {
