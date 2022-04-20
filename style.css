@@ -1,0 +1,244 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: lightcoral;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+#row-top{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10%;
+}
+#row-align-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.letter{
+    border-bottom: solid 6px black;
+    font-size: 3em;
+    margin: 10px;
+    width: 40px;
+    text-align: center;
+}
+
+#row-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: row;
+}
+
+
+#container-pendu {
+    position: relative;
+    top: -185px;
+    left: 100px;
+    height: 200px;
+    width: 200px;
+}
+
+#keyboard {
+    margin-bottom: 50px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.key-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px;
+    padding: 0;
+}
+
+.key {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    max-height: 30px;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.key:hover {
+    background-color: lightgray;
+}
+
+.enter {
+    width: 72px;
+    min-width: 72px;
+    max-width: 72px;
+    font-size: 1.2em;
+
+}
+
+
+
+#bar-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 5px;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+#bar-vertical {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    height: 200px;
+    width: 5px;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+#bar-top {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 106px;
+    height: 5px;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+#bar-corner {
+    position: absolute;
+    top: 18px;
+    left: 45px;
+    width: 50px;
+    height: 5px;
+    background-color: black;
+    transform: rotateZ(-45deg);
+    margin: 0;
+    padding: 0;
+}
+
+#bar-corde {
+    position: absolute;
+    top: 0;
+    left: 151px;
+    width: 5px;
+    height: 30px;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+#bar-head {
+    position: absolute;
+    top: 28px;
+    left: 133.5px;
+    height: 30px;
+    width: 30px;
+    background-color: lightcoral;
+    border: solid 5px black;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+#bar-body {
+    position: absolute;
+    top: 65px;
+    left: 151px;
+    height: 65px;
+    width: 5px;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+#bar-armR {
+    position: absolute;
+    top: 62px;
+    left: 138px;
+    height: 30px;
+    width: 5px;
+    background-color: black;
+    transform: rotateZ(-55deg);
+    margin: 0;
+    padding: 0;
+}
+
+#bar-armL {
+    position: absolute;
+    top: 62px;
+    left: 164px;
+    height: 30px;
+    width: 5px;
+    background-color: black;
+    transform: rotateZ(55deg);
+    margin: 0;
+    padding: 0;
+}
+
+#bar-legR {
+    position: absolute;
+    top: 120px;
+    left: 140px;
+    height: 30px;
+    width: 5px;
+    background-color: black;
+    transform: rotateZ(45deg);
+    margin: 0;
+    padding: 0;
+}
+
+#bar-legL {
+    position: absolute;
+    top: 120px;
+    left: 162px;
+    height: 30px;
+    width: 5px;
+    background-color: black;
+    transform: rotateZ(-45deg);
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+@media screen and (max-width: 800px) {
+    #keyboard {
+        display: none;
+    }
+}
