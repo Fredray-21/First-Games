@@ -1,39 +1,87 @@
-var mots = "socialite";
-var pendue = 0;
-$("document").ready(function () {
-    pendue == 5 ? $("#bar-bottom,#bar-vertical,#bar-top,#bar-corner,#bar-corde").css("display", "block") : false;
-    mots.split("").forEach((e) => {
+start();
+async function start() {
+    const mot = await randomWord();
+    console.log(mot);
+    let etapependu = 0;
+    etapependu == 5 ? $("#bar-bottom,#bar-vertical,#bar-top,#bar-corner,#bar-corde").css("display", "block") : false;
+    mot.split("").forEach((e) => {
         $("#row-align-bottom").append("<div class='letter' data-id='" + e.toLocaleUpperCase() + "'></div>");
     });
 
     $(".key").click(function () {
-        var key = $(this).text();
-        var good = false;
-
+        const key = $(this).text();
+        let good = false;
         $("#row-align-bottom .letter").each(function () {
-            (key == $(this).data("id")) ? ($(this).text(key), good = true) : false;
+            (key == strNoAccent($(this).data("id"))) ? ($(this).text($(this).data("id")), good = true) : false;
         });
-
         $(this).unbind("click");
         $(this).css("cursor", "not-allowed");
-        good ? $(this).css("background-color", "green") : ($(this).css("opacity", "0.5"), $(this).css("background-color", "lightcoral"), pendue++, pendu());
+        good ? $(this).css("background-color", "green") : ($(this).css("opacity", "0.5"), $(this).css("background-color", "lightcoral"), etapependu++, pendu(etapependu));
     });
+}
 
-    function pendu() {
-        console.log(pendue);
-        switch (pendue) {
-            case 1: $("#bar-bottom").css("display", "block"); break;
-            case 2: $("#bar-vertical").css("display", "block"); break;
-            case 3: $("#bar-top").css("display", "block"); break;
-            case 4: $("#bar-corner").css("display", "block"); break;
-            case 5: $("#bar-corde").css("display", "block"); break;
-            case 6: $("#bar-head").css("display", "block"); break;
-            case 7: $("#bar-body").css("display", "block"); break;
-            case 8: $("#bar-armL").css("display", "block"); break;
-            case 9: $("#bar-armR").css("display", "block"); break;
-            case 10: $("#bar-legL").css("display", "block"); break;
-            case 11: $("#bar-legR").css("display", "block"); break;
-        }
+
+function pendu(etapependu) {
+    switch (etapependu) {
+        case 1: $("#bar-bottom").css("display", "block"); break;
+        case 2: $("#bar-vertical").css("display", "block"); break;
+        case 3: $("#bar-top").css("display", "block"); break;
+        case 4: $("#bar-corner").css("display", "block"); break;
+        case 5: $("#bar-corde").css("display", "block"); break;
+        case 6: $("#bar-head").css("display", "block"); break;
+        case 7: $("#bar-body").css("display", "block"); break;
+        case 8: $("#bar-armL").css("display", "block"); break;
+        case 9: $("#bar-armR").css("display", "block"); break;
+        case 10: $("#bar-legL").css("display", "block"); break;
+        case 11: $("#bar-legR").css("display", "block"); break;
     }
-});
+}
 
+
+async function randomWord() {
+    const jsonData = await fetch("./dico.json").then(res => res.json());
+    const count = Object.keys(jsonData).length;
+    const random = Math.floor(Math.random() * count);
+    const randomWord = jsonData[Object.keys(jsonData)[random]];
+    return randomWord;
+}
+
+
+function strNoAccent(a) {
+    let b = "áàâäãåçéèêëíïîìñóòôöõúùûüýÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ",
+        c = "aaaaaaceeeeiiiinooooouuuuyAAAAAACEEEEIIIINOOOOOUUUUY",
+        d = "";
+    for (let i = 0, j = a.length; i < j; i++) {
+        let e = a.substr(i, 1);
+        d += (b.indexOf(e) !== -1) ? c.substr(b.indexOf(e), 1) : e;
+    }
+    return d;
+}
+
+
+function createDataJson() {
+    array = [];
+    fetch('./DEM.jsonl').then(response => response.text()).then(data => {
+        data.split('\n').forEach(line => {
+            const obj = JSON.parse(line);
+            if (obj.M.split(' ').length == 1 && obj.M.includes('-') == false && obj.M.length >= 4 && array.includes(obj.M) == false) {
+                array.push(obj.M);
+            }
+        });
+        let i = 0;
+        let json = "";
+        array.forEach(function (item) {
+            json += '"' + i + '"' + ':"' + item + '",';
+            i++;
+        });
+        json = '{' + json.substring(0, json.length - 1) + '}';
+        function download(content, fileName, contentType) {
+            const a = document.createElement("a");
+            const file = new Blob([content], { type: contentType });
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+        download(json, 'dico.json', 'text/plain');
+    });
+}
