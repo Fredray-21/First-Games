@@ -38,6 +38,16 @@ body {
     text-align: center;
 }
 
+.winner {
+    font-size: 3em;
+    margin: 10px;
+    text-align: center;
+}
+
+.title {
+    font-weight: bold;
+}
+
 #row-bottom {
     display: flex;
     justify-content: center;
@@ -53,6 +63,29 @@ body {
     height: 200px;
     width: 200px;
 }
+#container-niveau {
+    position: relative;
+    top: -100px;
+    left: -100px;
+    height: 200px;
+    width: 200px;
+}
+#container-niveau button{
+    height: 60px;
+    width: 200px;
+    background: none;
+    border: solid 2px black;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    
+}
+#container-niveau button:hover{
+background-color: lightgray;
+}
+
 
 #keyboard {
     margin-bottom: 50px;
