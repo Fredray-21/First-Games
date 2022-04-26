@@ -1,9 +1,13 @@
 start();
 async function start() {
+    let etapependu = 0;
     const mot = await randomWord();
     console.log(mot);
-    let etapependu = 5;
-    etapependu == 5 ? $("#bar-bottom,#bar-vertical,#bar-top,#bar-corner,#bar-corde").css("display", "block") : false;
+    etapependu == 5 ?
+        ($("#bar-bottom,#bar-vertical,#bar-top,#bar-corner,#bar-corde").css("display", "block"),
+            $("#bar-head,#bar-body,#bar-armL,#bar-armR,#bar-legL,#bar-legR").css("display", "none")) :
+        ($("#container-pendu div:not(#niveau-lib)").css("display", "none"));
+
     mot.split("").forEach((e) => {
         $("#row-align-bottom").append("<div class='letter' data-id='" + e.toLocaleUpperCase() + "'></div>");
     });
@@ -16,12 +20,13 @@ async function start() {
         });
         $(this).unbind("click");
         $(this).css("cursor", "not-allowed");
-        good ? ($(this).css("background-color", "green"), isWin(mot)) : ($(this).css("opacity", "0.5"), $(this).css("background-color", "lightcoral"), etapependu++, pendu(etapependu,mot));
+        good ? ($(this).css("background-color", "green"), isWin(mot)) : ($(this).css("opacity", "0.5"), $(this).css("background-color", "lightcoral"), etapependu++, pendu(etapependu, mot));
     });
+
 }
 
 
-function pendu(etapependu,mot) {
+function pendu(etapependu, mot) {
     switch (etapependu) {
         case 1: $("#bar-bottom").css("display", "block"); break;
         case 2: $("#bar-vertical").css("display", "block"); break;
@@ -33,7 +38,8 @@ function pendu(etapependu,mot) {
         case 8: $("#bar-armL").css("display", "block"); break;
         case 9: $("#bar-armR").css("display", "block"); break;
         case 10: $("#bar-legL").css("display", "block"); break;
-        case 11: $("#bar-legR").css("display", "block"); isDefeat(mot); break;
+        case 11: $("#bar-legR").css("display", "block"); break;
+        case 12: isDefeat(mot); break;
     }
 }
 
@@ -48,10 +54,12 @@ function isWin(mot) {
         $("#row-top").css("padding-bottom", "0");
         $("#row-top").html("<div class='winner title'>Victoire</div>");
         $("#row-top").append("<div class='winner'>(" + mot + ")</div>");
+        $("#row-top").append("<button class='btn-newParti'>Continuer</button>");
 
         $(".key").css("opacity", "0.5");
         $(".key").unbind("click");
         $(".key").css("cursor", "not-allowed");
+        $("#row-top > button").click(() => nextParti(mot));
     }
 }
 function isDefeat(mot) {
@@ -60,10 +68,31 @@ function isDefeat(mot) {
     $("#row-top").css("padding-bottom", "0");
     $("#row-top").html("<div class='winner title'>Défaite</div>");
     $("#row-top").append("<div class='winner'>(" + mot + ")</div>");
+    $("#row-top").append("<button class='btn-newParti' >Rejouer</button>");
 
     $(".key").css("opacity", "0.5");
     $(".key").unbind("click");
     $(".key").css("cursor", "not-allowed");
+    $("#row-top > button").click(() => location.reload());
+}
+
+
+function nextParti(mot) {
+    $("#row-top").html("<div id='row-align-bottom'></div>");
+    $("#row-top").removeAttr("style");
+    $(".key").removeAttr("style");
+
+    const nbLi = $("#history ul li").length + 1;
+    const motCapitalized = mot.charAt(0).toUpperCase() + mot.slice(1)
+    const li = document.createElement("li");
+    $(li).html("<b>Partie" + nbLi + " : </b><br>" + motCapitalized);
+    $(li).css("display", "none");
+    $("#history ul").prepend(li);
+    $(li).slideToggle(800);
+
+    $("#history p span").html("(" + nbLi + ")");
+    $("#listHistory").animate({ scrollTop: $("#listHistory").height() + $("#listHistory").height() });
+    start();
 }
 
 async function randomWord() {

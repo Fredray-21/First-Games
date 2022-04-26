@@ -63,6 +63,19 @@ body {
     height: 200px;
     width: 200px;
 }
+
+
+#niveau-lib {
+    position: relative;
+    top: -50px;
+    left: 40px;
+    font-weight: bold;
+}
+
+#niveau-lib::before {
+    content: "Niveau : "
+}
+
 #container-niveau {
     position: relative;
     top: -100px;
@@ -70,7 +83,8 @@ body {
     height: 200px;
     width: 200px;
 }
-#container-niveau button{
+
+#container-niveau button {
     height: 60px;
     width: 200px;
     background: none;
@@ -80,10 +94,10 @@ body {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.2em;
-    
 }
-#container-niveau button:hover{
-background-color: lightgray;
+
+#container-niveau button:hover {
+    background-color: lightgray;
 }
 
 
@@ -280,6 +294,43 @@ background-color: lightgray;
 #bar-top,
 #bar-vertical,
 #bar-bottom {
+    display: none;
+}
+
+.btn-newParti {
+    background: none;
+    border: solid 2px green;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.btn-newParti:hover {
+    background-color: green;
+}
+
+#history {
+    position: relative;
+    top: -100px;
+    left: -100px;
+}
+
+#history p {
+    text-align: center;
+    font-weight: bold;
+}
+#history ul li {
+margin: 5px;
+}
+
+#history #listHistory {
+    overflow-y: scroll;
+    height: 300px;
+    width: 200px;
+}
+
+#history #listHistory::-webkit-scrollbar {
     display: none;
 }
 
