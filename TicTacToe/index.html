@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div id="main">
+        <div class="row">
+            <div class="button"></div>
+            <div class="button"></div>
+            <div class="button"></div>
+        </div>
+        <div class="row">
+            <div class="button"></div>
+            <div class="button"></div>
+            <div class="button"></div>
+        </div>
+        <div class="row">
+            <div class="button"></div>
+            <div class="button"></div>
+            <div class="button"></div>
+        </div>
+    </div>
+    <p id="info">C'est au tour de <span id="sp">&#x2715;</span> de jouer</p>
+    <button id="reload">Rejouer</button>
+
+    <div id="history">
+
+    </div>
+
+    <div class="row" id="score">
+        <h2 id="titleNbWin">Nombre de Victoire</h2>
+        <span id="croix">
+            <div class="button">&#x2715;</div>
+            <span>=</span>
+            <span class="nbPoint">0</span>
+        </span>
+
+        <span id="rond">
+            <div class="button">&#9711;</div>
+            <span>=</span>
+            <span class="nbPoint">0</span>
+        </span>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</html>
