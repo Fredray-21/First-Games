@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Jeu de la vie</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 1em;
+            height: 1em;
+            border: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        td:hover {
+            background-color: #f2f2f2;
+        }
+
+        td.active {
+            background-color: black;
+            border-color: white;
+        }
+
+        button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button.stop {
+            background: #f44336;
+        }
+
+        button.stop:hover {
+            background-color: #da190b;
+        }
+
+        #actions {
+            margin-top: 1em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1em;
+
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<div id="actions">
+    <button id="start">Start</button>
+    <button id="clear" >Clear</button>
+    <input type="range" min="1" max="20" value="10" class="slider" id="speed">
+    <div id="generation">Generation: 0</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
